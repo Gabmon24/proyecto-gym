@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: oklch(0.13 0.018 260);
+  --color-surface: oklch(0.18 0.022 260);
+  --color-surface-hover: oklch(0.22 0.025 260);
+  --color-surface-card: oklch(0.16 0.02 260);
+
+  /* Acentos de Alta Energía (Gym Aesthetic) */
+  --color-brand-primary: oklch(0.82 0.22 145); /* Lima eléctrico de alta visibilidad */
+  --color-brand-accent: oklch(0.70 0.18 195);  /* Cian técnico */
+
+  /* Semáforo de Acceso */
+  --color-status-granted: oklch(0.78 0.22 145);
+  --color-status-warning: oklch(0.82 0.18 85);
+  --color-status-denied: oklch(0.65 0.24 25);
+
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: oklch(0.96 0.005 260);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  min-height: 100vh;
+}
+
+/* Elevaciones artesanales multicapa */
+.card-craft {
+  background-color: var(--color-surface-card);
+  border: 1px solid oklch(1 0 0 / 0.08);
+  box-shadow:
+    0 1px 2px -1px oklch(0 0 0 / 0.2),
+    0 4px 12px -2px oklch(0 0 0 / 0.3);
+}
+
+.card-craft-active {
+  background-color: var(--color-surface-card);
+  border: 1px solid oklch(0.82 0.22 145 / 0.35);
+  box-shadow:
+    0 0 20px -5px oklch(0.82 0.22 145 / 0.15),
+    0 4px 12px -2px oklch(0 0 0 / 0.3);
+}

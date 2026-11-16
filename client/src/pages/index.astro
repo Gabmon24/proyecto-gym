@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { GymDashboard } from '../components/GymDashboard';
+---
+
+<Layout title="Proyecto Gym — Sistema de Gestión y Control de Membresías">
+  <!-- Consola Operativa Central del Gimnasio -->
+  <section class="max-w-7xl mx-auto">
+    <GymDashboard client:load />
+  </section>
+</Layout>
