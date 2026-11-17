@@ -9,6 +9,10 @@
 ![Tailwind](https://img.shields.io/badge/Tailwind-CSS_v4_OKLCH-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Colombia](https://img.shields.io/badge/Context-Colombia_COP_(%2460k)-FFD700?style=for-the-badge)
 
+<br/>
+
+[![Live Demo](https://img.shields.io/badge/🚀_VER_DEMO_EN_VIVO-Vercel_Cloud-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://proyecto-6bxqv16ow-gabmon24.vercel.app)
+
 <p align="center">
   <strong>Sistema operativo de alto rendimiento diseñado para la economía y operación real de gimnasios en Colombia.</strong><br>
   Tarifas estándar en COP ($60.000/mes) · Pagos por Nequi, Daviplata y Efectivo · Carnet Digital QR · Kiosko con Audio-Feedback · Arqueo de Caja diario · Motor de Festivos (Ley Emiliani).
