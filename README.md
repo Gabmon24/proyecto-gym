@@ -1,65 +1,113 @@
 # 🏋️ Proyecto Gym — Sistema Integral de Gestión y Control de Gimnasios
 
-Sistema operativo integral y de alto rendimiento diseñado específicamente para la operación real de gimnasios en **Colombia**: tarifas en COP, planes de $60.000 COP, pagos por **Nequi**, **Daviplata** y **Efectivo**, carnet digital con código QR dinámico, punto de venta de barra (POS hidratación y suplementos), kiosko con audio-feedback, arqueo de caja y motor de festivos nacionales (Ley Emiliani).
+<div align="center">
 
-Desarrollado bajo principios de **Clean Architecture**, separación estricta frontend/backend y estándares de ingeniería de software para portafolio profesional.
+![Vitest Tests](https://img.shields.io/badge/Unit_Tests-19_Passing_(100%25)-10b981?style=for-the-badge&logo=vitest&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-Strict_ESNext-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Architecture](https://img.shields.io/badge/Architecture-Clean_/_Decoupled-f59e0b?style=for-the-badge)
+![Astro & React](https://img.shields.io/badge/Frontend-Astro_5_+_React_19-BC52EE?style=for-the-badge&logo=astro&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind-CSS_v4_OKLCH-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Colombia](https://img.shields.io/badge/Context-Colombia_COP_(%2460k)-FFD700?style=for-the-badge)
+
+<p align="center">
+  <strong>Sistema operativo de alto rendimiento diseñado para la economía y operación real de gimnasios en Colombia.</strong><br>
+  Tarifas estándar en COP ($60.000/mes) · Pagos por Nequi, Daviplata y Efectivo · Carnet Digital QR · Kiosko con Audio-Feedback · Arqueo de Caja diario · Motor de Festivos (Ley Emiliani).
+</p>
+
+</div>
 
 ---
 
-## ⚡ Características Principales
+## 💡 ¿Por qué este proyecto demuestra entendimiento del Negocio Real?
 
-### 1. 👥 Gestión Integral de Miembros
-- **Directorio de Socios:** Búsqueda en tiempo real por nombre, cédula o teléfono, con filtros por estado (*Activo, Por Vencer, Vencido, Congelado*).
-- **Ficha y Edición Completa:** Modificación de nombres, teléfonos/WhatsApp, correos, contactos de emergencia y notas médicas.
-- **Cambio de Planes & Congelamiento:** Permite cambiar el plan en caliente o congelar temporalmente la membresía (viajes/incapacidades médicas) recalculando automáticamente los días restantes.
-- **Ficha Antropométrica & Salud:** Registro de peso corporal (kg), estatura (cm), grasa estimada y objetivo fitness (*Hipertrofia, Definición, Fuerza, Salud*), con **cálculo reactivo automático del IMC**.
-- **Gestión de Fotos:** Selección de avatares predeterminados en alta resolución o carga de fotos directamente desde el computador (DataURL / Base64 nativo).
-- **Exportación CSV:** Descarga con un clic de toda la base de datos de socios compatible con Excel.
+La mayoría de proyectos junior son clones superficiales sin reglas de negocio. **Proyecto Gym** fue diseñado resolviendo los dolores operativos reales que sufren los dueños y administradores de gimnasios en Colombia:
 
-### 2. 🎟️ Carnet Digital Oficial de Socio VIP
-- Credencial virtual con estética futurista de alta gama (*Apple Wallet* / Pass VIP).
-- Foto del socio, chip de seguridad metálico, nombre, número de documento y fecha de vigencia.
-- **Código QR dinámico** generado para control de acceso rápido.
-- Botones de acción directa: **Enviar por WhatsApp**, **Imprimir Credencial** y **Simular Marcación en Kiosko**.
+```mermaid
+flowchart TD
+    subgraph Negocio["Operación Real del Gimnasio"]
+        A["Socio llega a Recepción"] --> B{"Control de Acceso Kiosko"}
+        B -->|Membresía Activa| C["🟢 Paso Permitido + Chime Sonoro"]
+        B -->|Por Vencer| D["🟡 Advertencia + Recordatorio de Pago"]
+        B -->|Vencida / Congelada| E["🔴 Acceso Denegado + Alerta Grave"]
+        
+        F["Cobro de Mensualidad o POS"] --> G{"Método de Pago Local"}
+        G -->|Nequi / Daviplata| H["Comprobante WhatsApp Directo + QR"]
+        G -->|Efectivo| I["Registro en Gaveta de Caja"]
+        
+        I --> J["Arqueo de Turno: Base ($50k) vs Físico Contado"]
+        J --> K["Cálculo Automático de Faltante / Sobrante"]
+    end
+```
 
-### 3. ⏱️ Kiosko de Recepción con Audio-Feedback
-- Marcación rápida por cédula con semáforo de estado:
-  - 🟢 **Acceso Autorizado:** Miembro con mensualidad al día.
-  - 🟡 **Advertencia:** Miembro próximo a vencer (últimos días).
-  - 🔴 **Acceso Denegado:** Mensualidad vencida, membresía congelada o usuario suspendido.
-- **Audio-Feedback Físico:** Sintetizador web nativo (**Web Audio API**) que emite tonos estilo torniquete (*Beep agudo* en acceso permitido, *Alerta grave* en vencido) con botón de silenciar.
+1. **Economía Real en Pesos Colombianos (COP):** Tarifas de mercado estándar en Colombia ($60.000 COP mensualidad, $160.000 COP trimestral, $10.000 COP pase diario).
+2. **Pagos Locales & Arqueo de Caja:** En Colombia, el 80% de los pagos en gimnasios no pasan por datáfono tradicional, sino por transferencias móviles (**Nequi / Daviplata**) o efectivo físico. El sistema consolida cada método y realiza el arqueo de turno contra la base inicial, detectando descuadres al centavo.
+3. **Punto de Venta de Barra (Nevera & Suplementos):** Venta rápida en 1-clic de hidratación (Aguas, Gatorade, Speed Max) y suplementación deportiva (scoops de proteína/creatina), sumándose de inmediato al saldo de caja del turno.
+4. **Carnet Digital de Socio VIP con QR:** Credencial virtual estilo *Apple Wallet* con foto, vigencia y código QR dinámico que los socios pueden llevar en su teléfono o recibir por WhatsApp para agilizar el ingreso.
+5. **Motor de Festivos Nacionales (Ley Emiliani):** Colombia es uno de los países con más días feriados del mundo (18 días). El backend implementa el algoritmo astronómico de Meeus para calcular Semana Santa y trasladar festivos a los lunes según la Ley 51 de 1983, permitiendo compensaciones justas a los socios.
+6. **Audio-Feedback Nativo (Web Audio API):** El kiosko reproduce tonos físicos de torniquete sintetizados en el navegador (agudo de confirmación o alerta grave de vencimiento) sin librerías externas ni archivos de audio pesados.
 
-### 4. 🛒 Tienda & POS de Mostrador (Nevera & Suplementos)
-- Catálogo de venta rápida para recepción:
-  - 💧 Agua Cristal 600ml ($2.000 COP)
-  - ⚡ Gatorade Frutas 500ml ($4.500 COP)
-  - 🔋 Speed Max 250ml ($2.500 COP)
-  - 🐂 Red Bull Energy ($7.000 COP)
-  - 🥤 Scoop de Proteína Whey Isolate ($6.000 COP)
-  - 💪 Scoop de Creatina Monohidrato ($4.000 COP)
-  - 🍫 Barras Proteicas Tosh Fit ($3.500 COP)
-- Registro de ventas en 1-clic vinculadas al socio o "Cliente Mostrador".
-- **Integración automática en el Arqueo de Caja** del turno actual.
+---
 
-### 5. 💰 Caja Diaria & Arqueo de Turno
-- Consolidación financiera en tiempo real: desglose exacto de ingresos por **Nequi**, **Daviplata**, **Efectivo** y transferencias.
-- Arqueo de gaveta: comprobación física contra base inicial ($50.000 COP) y detección automática de sobrantes o faltantes.
-- Libro diario de transacciones con hora y concepto.
+## 🏛️ Arquitectura de Software Limpia (Clean Architecture)
 
-### 6. 🇨🇴 Motor de Festivos de Colombia (Ley Emiliani)
-- Algoritmo astronómico de Butcher-Meeus para el cálculo de Semana Santa y festivos móviles trasladados al lunes siguiente según la Ley 51 de 1983.
+El proyecto mantiene una estricta separación de responsabilidades, dividiendo el dominio del negocio, la persistencia y la interfaz de usuario:
+
+```mermaid
+graph TD
+    subgraph Frontend["Frontend Client (Astro 5 + React 19)"]
+        UI["GymDashboard (Isla React Interactiva)"]
+        Components["Kiosko · Directorio · POS Tienda · Arqueo"]
+        Audio["Web Audio API Synth"]
+    end
+
+    subgraph Backend["Backend API (Hono + TypeScript)"]
+        Routes["Controladores HTTP / Rutas (/api/members, /api/access)"]
+        Services["Servicios Puros de Dominio"]
+        Tests["19 Pruebas Unitarias Vitest"]
+    end
+
+    subgraph Data["Persistencia & Modelado"]
+        Drizzle["Drizzle ORM (Esquemas Relacionales Tipados)"]
+        DB[(PostgreSQL / Pooling)]
+    end
+
+    UI --> Routes
+    Routes --> Services
+    Services --> Drizzle
+    Drizzle --> DB
+    Services -.-> Tests
+```
+
+---
+
+## 🧪 Pruebas Unitarias Automatizadas (Vitest)
+
+El corazón de la lógica de negocio cuenta con una suite completa de pruebas unitarias que validan estados de membresía, cálculos financieros y auditoría de notificaciones:
+
+```bash
+$ npm test
+
+ ✓ src/services/__tests__/cash-register.service.test.ts (4 tests) 16ms
+ ✓ src/services/__tests__/email.service.test.ts (3 tests) 17ms
+ ✓ src/services/__tests__/membership.service.test.ts (12 tests) 19ms
+
+ Test Files  3 passed (3)
+      Tests  19 passed (19)
+   Duration  648ms (100% Passing)
+```
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
-| Capa | Tecnologías |
-| :--- | :--- |
-| **Frontend** | Astro 5, React 19, Tailwind CSS v4, Lucide Icons, Canvas Confetti |
-| **Backend** | Hono (Node.js), TypeScript estricto, Zod (validación fail-fast) |
-| **Base de Datos** | PostgreSQL, Drizzle ORM (preparado para pooling y migraciones) |
-| **Testing** | Vitest (19 pruebas unitarias de lógica pura y servicios) |
-| **Audio & Web APIs** | Web Audio API (synth nativo), FileReader API, Print CSS |
+| Capa | Tecnologías | Propósito |
+| :--- | :--- | :--- |
+| **Frontend UI** | Astro 5, React 19, Tailwind CSS v4 | Interfaz ultra reactiva con renderizado de islas y tokens de color OKLCH |
+| **Backend API** | Hono sobre Node.js, TypeScript estricto | Servidor ligero, veloz y completamente tipado de extremo a extremo |
+| **Persistencia** | PostgreSQL con Drizzle ORM | Consultas parametrizadas seguras contra inyección SQL y migraciones controladas |
+| **Validación** | Zod | Validación fail-fast de variables de entorno y DTOs de entrada |
+| **Testing** | Vitest | Pruebas unitarias de ejecución instantánea (<700ms) |
+| **Hardware / Web** | Web Audio API, FileReader API | Sonidos de torniquete nativos y procesamiento de avatares en cliente |
 
 ---
 
@@ -76,7 +124,7 @@ proyecto-gym/
 │   │   ├── pages/
 │   │   │   └── index.astro               # Isla interactiva principal
 │   │   └── styles/
-│   │       └── global.css                # Tailwind v4 con tokens de color
+│   │       └── global.css                # Tailwind v4 con tokens de color OKLCH
 │   ├── astro.config.mjs
 │   └── package.json
 │
@@ -116,7 +164,7 @@ proyecto-gym/
 
 ### 1. Clonar el repositorio
 ```bash
-git clone https://github.com/TU_USUARIO/proyecto-gym.git
+git clone https://github.com/Gabmon24/proyecto-gym.git
 cd proyecto-gym
 ```
 
@@ -139,7 +187,7 @@ npm test
 
 ## 👨‍💻 Autor
 
-Desarrollado por **Gabriel** ([@Gabmon24](https://github.com/Gabmon24))
-- Licenciado en Informática
-- Tecnólogo en Análisis y Desarrollo de Software (ADSO)
-- Colombia 🇨🇴
+Desarrollado con orgullo por **Gabriel Montiel** ([@Gabmon24](https://github.com/Gabmon24))
+- 🎓 **Licenciado en Informática**
+- 🚀 **Tecnólogo en Análisis y Desarrollo de Software (ADSO - SENA)**
+- 📍 Colombia 🇨🇴 · *Open to Remote Software Engineering Roles*
